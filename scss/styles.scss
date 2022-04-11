@@ -1,0 +1,198 @@
+@use "reset";
+@use "breakpoints" as *;
+
+:root {
+  // primary text
+  --dkr-desaturated-blue: hsl(238, 29%, 16%);
+  --soft-red: hsl(14, 88%, 65%);
+
+  // primary gradient
+  --soft-violet: hsl(273, 75%, 66%);
+  --soft-blue: hsl(240, 73%, 65%);
+
+  // neutral text
+  --dkr-grayish-blue: hsl(237, 12%, 33%);
+  --dk-grayish-blue: hsl(240, 6%, 50%);
+
+  // neutral divider
+  --lt-grayish-blue: hsl(240, 5%, 91%);
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: "Kumbh Sans", sans-serif;
+  background-image: linear-gradient(var(--soft-violet), var(--soft-blue));
+  color: var(--dkr-desaturated-blue);
+}
+
+.container {
+  padding-top: 15rem;
+  // padding-inline: 2.5rem;
+  margin: 0 auto;
+  min-width: 32.5rem;
+  width: min(92rem, 90%);
+
+  @include breakpoint($first) {
+    padding-inline: 0;
+  }
+}
+
+.accordian-card {
+  background-color: white;
+  padding-inline: 2.6rem;
+  padding-bottom: 2.6rem;
+  border-radius: 2rem;
+  position: relative;
+
+  &__box {
+    display: none;
+
+    @include breakpoint($first) {
+      display: block;
+      position: absolute;
+      top: 40%;
+      left: -10%;
+      z-index: 999;
+    }
+  }
+
+  @include breakpoint($first) {
+    padding: 0;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+  }
+}
+
+.img-container {
+  width: min-content;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  @include breakpoint($first) {
+    width: 38rem;
+  }
+
+  &__mobile {
+    position: relative;
+
+    @include breakpoint($first) {
+      display: none;
+    }
+
+    &__illustration {
+      position: absolute;
+      top: -100%;
+      left: 0;
+    }
+  }
+
+  &__desktop {
+    display: none;
+    height: 30rem;
+    position: relative;
+
+    @include breakpoint($first) {
+      display: block;
+    }
+
+    &__bg-pattern {
+      position: absolute;
+      top: -90%;
+      right: 0;
+    }
+
+    &__illustration {
+      width: 120%;
+      position: absolute;
+      top: 30%;
+      right: 0;
+    }
+  }
+}
+
+.accordians-container {
+  @include breakpoint($first) {
+    padding: 5.6rem;
+    padding-inline: 8rem;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-block: 3.2rem;
+
+    @include breakpoint($first) {
+      text-align: left;
+    }
+  }
+
+  &__accordian {
+    $this: &;
+    cursor: pointer;
+
+    &__question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.3rem;
+      color: var(--dkr-grayish-blue);
+
+      @include breakpoint($first) {
+        font-size: 1.4rem;
+      }
+
+      &:hover {
+        color: var(--soft-red);
+      }
+    }
+
+    &__answer {
+      max-height: 0;
+      overflow: hidden;
+      color: var(--dk-grayish-blue);
+      transition: max-height 200ms ease-in-out;
+      padding-top: 1rem;
+    }
+
+    & img {
+      transition: transform 250ms ease-in-out;
+    }
+
+    &--active {
+      #{ $this }__question {
+        font-weight: 700;
+      }
+
+      #{ $this }__answer {
+        max-height: 100vh;
+      }
+
+      & img {
+        transform: rotateZ(-180deg);
+      }
+    }
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid var(--lt-grayish-blue);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.attribution {
+  width: 100%;
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  position: absolute;
+  bottom: 0;
+
+  a {
+    color: var(--soft-red);
+  }
+}
