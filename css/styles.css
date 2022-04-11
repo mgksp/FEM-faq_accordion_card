@@ -30,6 +30,12 @@ body {
   background-image: linear-gradient(var(--soft-violet), var(--soft-blue));
   color: var(--dkr-desaturated-blue);
 }
+@media only screen and (min-width: 968px) {
+  body {
+    display: grid;
+    place-content: center;
+  }
+}
 
 .container {
   padding-top: 15rem;
@@ -39,7 +45,7 @@ body {
 }
 @media only screen and (min-width: 968px) {
   .container {
-    padding-inline: 0;
+    padding-top: 0;
   }
 }
 
@@ -49,6 +55,7 @@ body {
   padding-bottom: 2.6rem;
   border-radius: 2rem;
   position: relative;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 .accordian-card__box {
   display: none;
