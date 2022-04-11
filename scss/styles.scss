@@ -73,9 +73,9 @@ body {
   width: min-content;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
 
   @include breakpoint($first) {
+    overflow: hidden;
     width: 38rem;
   }
 

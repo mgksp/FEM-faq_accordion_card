@@ -84,10 +84,10 @@ body {
   width: min-content;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
 }
 @media only screen and (min-width: 968px) {
   .img-container {
+    overflow: hidden;
     width: 38rem;
   }
 }
